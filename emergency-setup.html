@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts - SafeHer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="emergency-page">
+    <div class="container">
+        <div class="emergency-card">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                        <path d="M30 10L35 25H50L38 35L42 50L30 40L18 50L22 35L10 25H25L30 10Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <h1>Your Safety Network</h1>
+                <p class="tagline">Add 3 trusted contacts who will be alerted in emergencies</p>
+            </div>
+
+            <form id="emergencyContactsForm" class="auth-form">
+                <!-- Contact 1 -->
+                <div class="contact-section">
+                    <h3>Contact 1</h3>
+                    <div class="form-group">
+                        <label for="name1">Full Name</label>
+                        <input type="text" id="name1" name="name1" required placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone1">Phone Number</label>
+                        <input type="tel" id="phone1" name="phone1" required placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="relation1">Relationship</label>
+                        <select id="relation1" name="relation1" required>
+                            <option value="">Select relationship</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Father">Father</option>
+                            <option value="Sister">Sister</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Spouse">Spouse</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contact 2 -->
+                <div class="contact-section">
+                    <h3>Contact 2</h3>
+                    <div class="form-group">
+                        <label for="name2">Full Name</label>
+                        <input type="text" id="name2" name="name2" required placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone2">Phone Number</label>
+                        <input type="tel" id="phone2" name="phone2" required placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="relation2">Relationship</label>
+                        <select id="relation2" name="relation2" required>
+                            <option value="">Select relationship</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Father">Father</option>
+                            <option value="Sister">Sister</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Spouse">Spouse</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contact 3 -->
+                <div class="contact-section">
+                    <h3>Contact 3</h3>
+                    <div class="form-group">
+                        <label for="name3">Full Name</label>
+                        <input type="text" id="name3" name="name3" required placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone3">Phone Number</label>
+                        <input type="tel" id="phone3" name="phone3" required placeholder="+1 (555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="relation3">Relationship</label>
+                        <select id="relation3" name="relation3" required>
+                            <option value="">Select relationship</option>
+                            <option value="Mother">Mother</option>
+                            <option value="Father">Father</option>
+                            <option value="Sister">Sister</option>
+                            <option value="Brother">Brother</option>
+                            <option value="Friend">Friend</option>
+                            <option value="Spouse">Spouse</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="saveContactsBtn">
+                    <span class="btn-text">Save & Continue</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="loader"></span>
+                    </span>
+                </button>
+            </form>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            <div id="successMessage" class="success-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/emergency-setup.js"></script>
+</body>
+</html>

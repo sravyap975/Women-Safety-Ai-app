@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SafeHer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <div class="logo-icon-small">
+                    <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+                        <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="2"/>
+                        <path d="M30 15C23.5 15 18 20.5 18 27V32C18 35.5 20.5 38 24 38H36C39.5 38 42 35.5 42 32V27C42 20.5 36.5 15 30 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2>SafeHer</h2>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span class="user-name" id="userName">User</span>
+                    <span class="user-email" id="userEmail">user@email.com</span>
+                </div>
+                <button class="btn-logout" id="logoutBtn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M8 14L12 10L8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M12 10H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M12 3H15C16.1046 3 17 3.89543 17 5V15C17 16.1046 16.1046 17 15 17H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Status Section -->
+            <section class="status-section">
+                <div class="status-card" id="statusCard">
+                    <div class="status-indicator" id="statusIndicator">
+                        <div class="pulse"></div>
+                        <div class="status-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 20L17 25L28 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 id="statusText">You're Safe</h3>
+                    <p id="statusDescription">Safety mode is currently off</p>
+                </div>
+
+                <!-- Safety Mode Toggle -->
+                <div class="safety-toggle-card">
+                    <div class="toggle-info">
+                        <h4>Safety Mode</h4>
+                        <p>Enable active monitoring and emergency features</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="safetyModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Location Section -->
+            <section class="location-section">
+                <div class="section-header">
+                    <h3>Current Location</h3>
+                    <button class="btn-secondary btn-small" id="refreshLocationBtn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C9.5 2 10.9 2.6 12 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 2V4H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Refresh
+                    </button>
+                </div>
+                <div id="map" class="map-container"></div>
+                <div class="location-details">
+                    <p id="locationText">Fetching your location...</p>
+                    <p id="locationCoords" class="coords-text"></p>
+                </div>
+            </section>
+
+            <!-- Emergency SOS Button -->
+            <section class="sos-section">
+                <button class="sos-button" id="sosButton">
+                    <div class="sos-ripple"></div>
+                    <div class="sos-content">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                            <circle cx="30" cy="30" r="28" stroke="currentColor" stroke-width="3"/>
+                            <text x="30" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="currentColor">SOS</text>
+                        </svg>
+                    </div>
+                    <span class="sos-text">Emergency Alert</span>
+                </button>
+                <p class="sos-instruction">Press and hold for 3 seconds to activate emergency alert</p>
+            </section>
+
+            <!-- Grid Layout for Cards -->
+            <div class="dashboard-grid">
+                <!-- State Selection -->
+                <div class="info-card">
+                    <h4>Select Your State</h4>
+                    <select id="stateSelect" class="state-select">
+                        <option value="">Choose your state</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="FL">Florida</option>
+                        <option value="NY">New York</option>
+                        <option value="TX">Texas</option>
+                        <option value="WA">Washington</option>
+                    </select>
+                </div>
+
+                <!-- Helpline Numbers -->
+                <div class="info-card">
+                    <h4>Emergency Helplines</h4>
+                    <div id="helplineNumbers" class="helpline-list">
+                        <div class="helpline-item">
+                            <span class="helpline-name">Emergency</span>
+                            <a href="tel:911" class="helpline-number">911</a>
+                        </div>
+                        <div class="helpline-item">
+                            <span class="helpline-name">Women's Helpline</span>
+                            <a href="tel:1800-599-0019" class="helpline-number">1-800-799-7233</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Tips -->
+                <div class="info-card">
+                    <h4>Safety Tips</h4>
+                    <div id="safetyTips" class="tips-list">
+                        <div class="tip-item">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M10 6V10L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <p>Stay in well-lit areas when walking alone</p>
+                        </div>
+                        <div class="tip-item">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="M10 6V10L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <p>Keep your phone charged and accessible</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Contacts -->
+                <div class="info-card">
+                    <h4>Emergency Contacts</h4>
+                    <div id="emergencyContactsList" class="contacts-list">
+                        <p class="loading-text">Loading contacts...</p>
+                    </div>
+                    <button class="btn-secondary btn-small" id="editContactsBtn">Edit Contacts</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Emergency Alert Modal -->
+    <div id="emergencyModal" class="modal" style="display: none;">
+        <div class="modal-content emergency-modal">
+            <div class="emergency-icon">
+                <div class="pulse-large"></div>
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-width="4"/>
+                    <text x="40" y="55" text-anchor="middle" font-size="28" font-weight="bold" fill="currentColor">SOS</text>
+                </svg>
+            </div>
+            <h2>Emergency Alert Activated!</h2>
+            <p>Notifying emergency contacts and authorities...</p>
+            <div class="emergency-actions">
+                <button class="btn btn-primary" id="cancelEmergencyBtn">Cancel Alert</button>
+                <button class="btn btn-secondary" id="confirmSafeBtn">I'm Safe Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio for siren -->
+    <audio id="sirenSound" loop>
+        <source src="sounds/police-siren.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

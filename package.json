@@ -1,0 +1,27 @@
+{
+  "name": "safeher-women-safety-app",
+  "version": "1.0.0",
+  "description": "Women Safety AI Application with emergency monitoring and real-time alerts",
+  "main": "index.html",
+  "scripts": {
+    "start": "firebase serve",
+    "deploy": "firebase deploy",
+    "build": "echo 'No build step required for static site'",
+    "test": "echo 'No tests configured'"
+  },
+  "keywords": [
+    "women-safety",
+    "emergency-alert",
+    "firebase",
+    "safety-monitoring",
+    "location-tracking"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "firebase-tools": "^12.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
